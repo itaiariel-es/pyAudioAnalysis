@@ -278,7 +278,7 @@ def stChromaFeatures(X, fs, nChroma, nFreqsPerChroma):
     newD = int(numpy.ceil(C.shape[0] / 12.0) * 12)
     C2 = numpy.zeros((newD, ))
     C2[0:C.shape[0]] = C
-    C2 = C2.reshape(C2.shape[0]/12, 12)
+    C2 = C2.reshape(int(C2.shape[0]/12), 12)
     #for i in range(12):
     #    finalC[i] = numpy.sum(C[i:C.shape[0]:12])
     finalC = numpy.matrix(numpy.sum(C2, axis=0)).T
@@ -549,7 +549,7 @@ def stFeatureExtraction(signal, Fs, Win, Step):
     N = len(signal)                                # total number of samples
     curPos = 0
     countFrames = 0
-    nFFT = Win / 2
+    nFFT = int(Win / 2)
 
     [fbank, freqs] = mfccInitFilterBanks(Fs, nFFT)                # compute the triangular filter banks used in the mfcc calculation
     nChroma, nFreqsPerChroma = stChromaFeaturesInit(nFFT, Fs)
