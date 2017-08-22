@@ -22,7 +22,6 @@ import imp
 #from scikits.talkbox import lpc
 
 imp.reload(sys)  
-sys.setdefaultencoding('utf8')
 
 eps = 0.00000001
 

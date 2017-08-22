@@ -7,6 +7,7 @@ setup(
     description="",
     author="",
     author_email="",
+    packages = ['pyAudioAnalysis'],
     url="",
     include_package_data=True,
     zip_safe=True,
