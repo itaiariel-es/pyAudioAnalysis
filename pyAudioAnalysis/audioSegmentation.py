@@ -150,7 +150,7 @@ def readSegmentGT(gtFile):
      - segEnd:       a numpy array of segments' ending positions
      - segLabel:     a list of respective class labels (strings)
     '''
-    f = open(gtFile, "rb")
+    f = open(gtFile, "rt")
     reader = csv.reader(f, delimiter=',')
     segStart = []
     segEnd = []
