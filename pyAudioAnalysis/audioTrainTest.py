@@ -19,8 +19,8 @@ from matplotlib.mlab import find
 from scipy import linalg as la
 from scipy.spatial import distance
 
-import audioBasicIO
-import audioFeatureExtraction as aF
+from . import audioBasicIO
+from . import audioFeatureExtraction as aF
 
 
 def signal_handler(signal, frame):
