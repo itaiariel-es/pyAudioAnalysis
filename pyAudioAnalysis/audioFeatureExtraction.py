@@ -542,7 +542,7 @@ def stSpectogram(signal, Fs, Win, Step, PLOT=False):
 """ Windowing and feature extraction """
 
 
-def stFeatureExtraction(signal, Fs, Win, Step):
+def stFeatureExtraction(signal, Fs, Win, Step, DC=None, MAX=None):
     """
     This function implements the shor-term windowing process. For each short-term window a set of features is extracted.
     This results to a sequence of feature vectors, stored in a numpy matrix.
@@ -556,15 +556,17 @@ def stFeatureExtraction(signal, Fs, Win, Step):
         stFeatures:   a numpy array (numOfFeatures x numOfShortTermWindows)
     """
 
+
     Win = int(Win)
     Step = int(Step)
 
     # Signal normalization
-    signal = numpy.double(signal)
+    if not DC or not MAX:
+        signal = numpy.double(signal)
+        signal = signal / (2.0 ** 15)
+        DC = signal.mean()
+        MAX = (numpy.abs(signal)).max()
 
-    signal = signal / (2.0 ** 15)
-    DC = signal.mean()
-    MAX = (numpy.abs(signal)).max()
     signal = (signal - DC) / (MAX + 0.0000000001)
 
     N = len(signal)                                # total number of samples

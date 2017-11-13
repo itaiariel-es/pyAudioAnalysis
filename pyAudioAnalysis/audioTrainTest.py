@@ -594,7 +594,7 @@ def loadSVModel(SVMmodelName, isRegression=False):
     STD = numpy.array(STD)
 
     COEFF = []
-    with open(SVMmodelName, 'rb') as fid:
+    with open(SVMmodelName, 'rb', encoding='latin1') as fid:
         SVM = cPickle.load(fid)
 
     if isRegression:
